@@ -125,6 +125,11 @@
                             <bead-id>3</bead-id>
                             <bead-type>target</bead-type>
                             <HLA-target-type>A*01:01</HLA-target-type>
+                            <!-- can this be generalized? -->
+                            <antigen-density>20000</antigen-density>
+                            <relative-antigen-density>1.0900</relative-antigen-density>
+
+
                             <!--<HLA-target-serological-specificity>A1</HLA-target-serological-specificity>-->
                         </bead-info>
                         <bead-raw-data>
@@ -148,6 +153,7 @@
                         </bead-adjusted-data>
                         <bead-adjusted-data>
                             <adjusted-data-id>3</adjusted-data-id>
+                            <adjustment-method>MFI/LRA</adjustment-method>
                             <mfi-ratio>3.4</mfi-ratio>
                             <formula>MFI/LRA</formula>
                             <bead-plausible>true</bead-plausible>
@@ -167,10 +173,16 @@
                             <interpretation-reason>Gut Feeling</interpretation-reason>
                         </bead-interpretation>
                         <bead-interpretation>
+
+                            <adjusted-data-id>1</adjusted-data-id>
+                            <adjusted-data-id>2</adjusted-data-id>
+                            <!-- Referring to which adjusted data is referenced here -->
+
                             <bead-classification>Positive</bead-classification>
                             <ratio-threshold>1.7</ratio-threshold>
                             <classification-entity>Werfen Match-It</classification-entity>
-                            <interpretation-reason>MFI/LRA ratio above ratio cut-off/threshold</interpretation-reason>
+                            <!-- think on a valid syntax for these formulas -->
+                            <interpretation-reason>MFI/LRA ratio above ratio cut-off/threshold and raw MFI is above threshold</interpretation-reason>
                         </bead-interpretation>
 
                         <!-- Control Observations:  +/- Serums -->

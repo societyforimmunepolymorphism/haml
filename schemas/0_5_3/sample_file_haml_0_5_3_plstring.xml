@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<haml xmlns="urn:HAML.Namespace"
+      version="0.5.3">
+
+    <haml-id>
+        <root>123.445a</root>
+        <extension>HAML Document #234134</extension>
+    </haml-id>
+
+    <reporting-center>University Medical Center Utrecht, HLA Laboratory</reporting-center>
+    <requisition-reason>This is intended as a workup for use in a kidney transplantation.</requisition-reason>
+
+    <patient>
+        <patient-id>Patient_440223</patient-id>
+
+        <sample>
+            <sample-id>Patient_serum_draw_412</sample-id>
+            <sample-date>2024-12-11T09:00:00+01:00</sample-date>
+            <sample-type>Serum</sample-type>
+            <testing-laboratory>ACME Labs</testing-laboratory>
+
+            <working-sample>
+                <working-sample-id>Patient_serum_prep_123</working-sample-id>
+                <treatment-date>2024-12-11T17:00:00+01:00</treatment-date>
+                <testing-laboratory>ACME Labs - Subdivision</testing-laboratory>
+
+                <assay>
+                    <assay-id>assay-1</assay-id>
+                    <run-id>unique_id_from_instrument</run-id>
+                    <assay-date>2025-10-23</assay-date>
+                    <!-- Details about the kit -->
+                    <assay-kit>
+                        <assay-type>Solid Phase Assay</assay-type>
+                        <catalog-number>LS1A04_extended</catalog-number>
+                        <lot-number>12345</lot-number>
+                        <kit-manufacturer>One_Lambda</kit-manufacturer>
+                        <kit-description>This is the extended panel for doing class II analysis</kit-description>
+                        <interpretation-software>HLA_Fusion</interpretation-software>
+                        <interpretation-software-version>4.1</interpretation-software-version>
+                        <raw-MFI-divider>0.56</raw-MFI-divider>
+                    </assay-kit>
+
+                    <!-- Bead 1 is a Negative Control Bead -->
+                    <target-bead-observation>
+                        <bead-info>
+                            <bead-id>1</bead-id>
+                            <bead-type>negative-control</bead-type>
+                        </bead-info>
+                        <bead-raw-data>
+                            <raw-MFI>78</raw-MFI>
+                            <bead-count>16</bead-count>
+                        </bead-raw-data>
+                    </target-bead-observation>
+
+                    <!-- Positive Control Bead -->
+                    <target-bead-observation>
+                        <bead-info>
+                            <bead-id>2</bead-id>
+                            <bead-type>positive-control</bead-type>
+                        </bead-info>
+                        <bead-raw-data>
+                            <raw-MFI>23484</raw-MFI>
+                            <bead-count>19</bead-count>
+                        </bead-raw-data>
+                    </target-bead-observation>
+
+                    <!-- Bead 3 is an HLA-DRB1*01:01 bead. -->
+                    <target-bead-observation>
+                        <bead-info>
+                            <bead-id>3</bead-id>
+                            <bead-type>target</bead-type>
+                            <HLA-target-type>hla#3.62.0#HLA-DRB1*01:01</HLA-target-type>
+                        </bead-info>
+                        <bead-raw-data>
+                            <raw-MFI>344</raw-MFI>
+                            <bead-count>16</bead-count>
+                        </bead-raw-data>
+
+                        <bead-interpretation>
+                            <bead-classification>Negative</bead-classification>
+                            <mfi-threshold>500</mfi-threshold>
+                            <classification-entity>Fusion Software Classification</classification-entity>
+                            <interpretation-reason>Standard Threshold &lt; 500 </interpretation-reason>
+                        </bead-interpretation>
+
+                    </target-bead-observation>
+
+                    <!-- Bead 4 is an HLA-DQA1*05:01~HLA-DQB1*02:01. -->
+                    <target-bead-observation>
+                        <bead-info>
+                            <bead-id>4</bead-id>
+                            <bead-type>target</bead-type>
+                            <HLA-target-type>hla#3.62.0#HLA-DQA1*05:01~HLA-DQB1*02:01</HLA-target-type>
+                        </bead-info>
+                        <bead-raw-data>
+                            <raw-MFI>1936</raw-MFI>
+                            <bead-count>18</bead-count>
+                        </bead-raw-data>
+
+                        <!-- Interpretation from a Software tool -->
+                        <bead-interpretation>
+                            <bead-classification>Positive</bead-classification>
+                            <mfi-threshold>500</mfi-threshold>
+                            <classification-entity>Fusion Software Classification</classification-entity>
+                            <interpretation-reason>Standard Threshold &lt; 500 </interpretation-reason>
+                        </bead-interpretation>
+
+                    </target-bead-observation>
+
+                    <!-- Bead 5 is an HLA-DPA1*01:03~HLA-DPB1*04:02 bead. -->
+                    <target-bead-observation>
+                        <bead-info>
+                            <bead-id>5</bead-id>
+                            <bead-type>target</bead-type>
+                            <HLA-target-type>hla#3.62.0#HLA-DPA1*01:03~HLA-DPB1*04:02</HLA-target-type>
+                        </bead-info>
+                        <bead-raw-data>
+                            <raw-MFI>2040</raw-MFI>
+                            <bead-count>25</bead-count>
+                        </bead-raw-data>
+
+                        <bead-interpretation>
+                            <bead-classification>Positive</bead-classification>
+                            <mfi-threshold>500</mfi-threshold>
+                            <classification-entity>Fusion Software Classification</classification-entity>
+                            <interpretation-reason>Standard Threshold &lt; 500 </interpretation-reason>
+                        </bead-interpretation>
+                    </target-bead-observation>
+
+                    <assay-interpretation>
+                        <interpretation-context>Kidney Transplantation Workup</interpretation-context>
+                        <interpretation-context-comment>This pre-transplant screen was performed 2 weeks before transplant.</interpretation-context-comment>
+                        <specificities>
+                            <specificities-type>Positive</specificities-type>
+                            <specificities-string>hla#3.62.0#HLA-DQA1*05:01~HLA-DQB1*02:01+HLA-DPA1*01:03~HLA-DPB1*04:02</specificities-string>
+                        </specificities>
+                        <specificities>
+                            <specificities-type>Negative</specificities-type>
+                            <specificities-string>hla#3.62.0#HLA-DRB1*01:01</specificities-string>
+                        </specificities>
+                        <reject-assay>false</reject-assay>
+                    </assay-interpretation>
+                </assay>
+            </working-sample>
+        </sample>
+        <diagnostic-report>
+            <report-id>Report_3492034923</report-id>
+            <report-date>2025-11-01</report-date>
+            <!-- Patient-level clinical interpretation -->
+            <patient-antibody-profile>
+                <specificities>
+                    <specificities-type>Unacceptable</specificities-type>
+                    <specificities-string>hla#3.62.0#HLA-DQA1*05:01~HLA-DQB1*02:01</specificities-string>
+                </specificities>
+            </patient-antibody-profile>
+        </diagnostic-report>
+    </patient>
+</haml>

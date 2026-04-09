@@ -495,6 +495,37 @@
         </xs:sequence>
     </xs:complexType>
 
+    <!-- CELL-INFO -->
+    <xs:complexType name="cell-info">
+        <xs:annotation><xs:documentation>
+            This structure contains information about a cell within a panel.
+            The cell has a certain HLA specificity or specificities.
+            This might be a control cell or a test cell.
+
+            Elements:
+            ----------
+            - cell-id: A string uniquely identifying this cell within the panel.
+            For example, ID may be comprised of [assay-kit lot-number + cell-identifier]
+            - cell-type: Valid options are "target", "positive-control", "negative-control"
+            TODO: Define an enumeration for cell-type
+            - HLA-target-type:  his is a PLString containing the HLA phenotype specificity of the cell.
+            Either an HLA-target-type or a HLA-target-serological-specificity should be provided. Not both. -> WHY NOT BOTH???
+            - HLA-target-serological-specificity: This is an PLString containing the
+            HLA serological specificity of the cell.
+            Either an HLA-target-type or a HLA-target-serological-specificity should be provided. Not both.  -> WHY NOT BOTH???
+            - antigen-density:
+            - relative-antigen-density:
+        </xs:documentation></xs:annotation>
+        <xs:sequence>
+            <xs:element type="xs:string" name="cell-id" minOccurs="1" maxOccurs="1" />
+            <xs:element type="xs:string" name="cell-type" minOccurs="1" maxOccurs="1" />
+            <xs:element type="hamlns:hla-plstring" name="HLA-target-type" minOccurs="0" maxOccurs="1" />
+            <xs:element type="hamlns:hla-plstring" name="HLA-target-serological-specificity" minOccurs="0" maxOccurs="1" />
+            <xs:element type="xs:double" name="antigen-density" minOccurs="0" maxOccurs="1" />
+            <xs:element type="xs:double" name="relative-antigen-density" minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+    </xs:complexType>
+
     <!-- HLA-PLSTRING -->
     <xs:simpleType name="hla-plstring">
         <xs:annotation><xs:documentation>
@@ -509,9 +540,9 @@
     </xs:simpleType>
 
     <!-- BEAD-CLASSIFICATION -->
-    <xs:simpleType name="bead-classification">
+    <xs:simpleType name="classification">
         <xs:annotation><xs:documentation>
-            This field describes if a bead was determined as Positive or Negative.
+            This field describes if a bead or cell was determined as Positive or Negative.
             Borderline results are also allowed.
             This is a valid result, but is ambiguous if it should be called Positive or Negative.
             It could also be considered as Intermediate.
@@ -526,8 +557,8 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <!-- BEAD-RANK -->
-    <xs:simpleType name="bead-rank">
+    <!-- RANK -->
+    <xs:simpleType name="rank">
         <xs:annotation><xs:documentation>
             This bead rank is a numerical system for assigning the specificities of beads.
 
@@ -553,7 +584,8 @@
         -->
     </xs:simpleType>
 
-    <!-- BEAD-RAW-DATA --> --> MERGE WITH BEAD results?? IS BEAD COUNT ON THE RIGHT PLACE HERE?
+    <!-- BEAD-RAW-DATA -->
+    <!-- TODO: Idea: MERGE WITH BEAD results?? IS BEAD COUNT ON THE RIGHT PLACE HERE?-->
     <xs:complexType name="bead-raw-data">
         <xs:annotation><xs:documentation>
             Bead observation raw data
@@ -562,7 +594,7 @@
             ----------
             - bead-count: Count of beads identified (int) for this observation (or bead gate)
             - raw-mfi: Raw MFI result for this bead and serum
-                No modifications or calculations have been performed on this measurement.
+            No modifications or calculations have been performed on this measurement.
         </xs:documentation></xs:annotation>
         <xs:sequence>
             <xs:element type="xs:double" name="raw-MFI" minOccurs="1" maxOccurs="1"/>
@@ -570,7 +602,26 @@
         </xs:sequence>
     </xs:complexType>
 
+    <!-- CELL-RAW-DATA -->
+    <!-- TODO: Idea: MERGE WITH BEAD results?? IS BEAD COUNT ON THE RIGHT PLACE HERE?-->
+    <xs:complexType name="cell-raw-data">
+        <xs:annotation><xs:documentation>
+            Bead observation raw data
+
+            Elements:
+            ----------
+            - raw-MFI: Raw MFI result for this cell and serum
+            - cell-count: Count of cells identified (int) for this observation
+            No modifications or calculations have been performed on this measurement.
+        </xs:documentation></xs:annotation>
+        <xs:sequence>
+            <xs:element type="xs:double" name="raw-MFI" minOccurs="1" maxOccurs="1"/>
+            <xs:element type="xs:double" name="cell-count" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
     <!-- BEAD-ADJUSTED-DATA -->
+    <!-- TODO: Can bead-adjusted-data and cell-adjusted data be combined into a single "adjusted data"?  Should they for simplicity?? -->
     <xs:complexType name="bead-adjusted-data">
         <xs:annotation><xs:documentation>
             Adjusted MFI results after formula and controls applied
@@ -625,8 +676,70 @@
             <xs:element type="xs:double" name="adjusted-mfi" minOccurs="0" maxOccurs="1"/>
             <xs:element type="xs:double" name="mfi-ratio" minOccurs="0" maxOccurs="1"/>
             <xs:element type="xs:string" name="formula" minOccurs="0" maxOccurs="1"/>
-            <xs:element type="xs:boolean" name="bead-plausible" minOccurs="0" maxOccurs="1"/> IS THIS AN ADJUSTMENT OR AN INTERPRETATION??? CAN THIS BE SET TO true BY DEFAULT?? OR ASSUME THAT empty MEANS true
+            <!-- TODO: IS BEAD-PLAUSIBLE AN ADJUSTMENT OR AN INTERPRETATION??? CAN THIS BE SET TO true BY DEFAULT?? OR ASSUME THAT empty MEANS true -->
+            <xs:element type="xs:boolean" name="bead-plausible" minOccurs="0" maxOccurs="1"/>
             <xs:element type="xs:string" name="bead-plausible-reason" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- CELL-ADJUSTED-DATA -->
+    <xs:complexType name="cell-adjusted-data">
+        <xs:annotation><xs:documentation>
+            Adjusted MFI results after formula and controls applied
+
+            Elements:
+            ----------
+            - adjusted-data-id: ID, unique within this target-cell-observation
+            - adjusted-mfi:  Adjusted result after formula and controls applied
+            - formula: Declaration of formula applied to derive adjusted MFI or MFI ratio. Freeform text, for example:
+
+            Modified MFI =
+            (cell Raw - Sample Negative)
+            - (Background raw - background negative)
+
+            Modified MFI =
+            (cell Raw / 3 - Sample Negative / 3)
+            - (Background raw / 3 - background negative / 3)
+
+            ## e.g. background correction based upon the loceus specific self background ###
+            ## for that I need to create A B C DRB1345, DQ DP adjustments -> 6 adjusted-data-IDs
+
+            #1 for HLA-A
+            Modified MFI =
+            (cell Raw  - Self HLA-A background)
+
+            #2 for HLA-B
+            Modified MFI =
+            (cell Raw  - Self HLA-B background)
+
+            #3 for HLA-C
+            Modified MFI =
+            (cell Raw  - Self HLA-C background)
+
+            Alternative
+            #xx for self HLA locus-specific
+            Modified MFI =
+            (cell Raw  - Self HLA background related to the analyzed cell)
+
+            etc --> WE NEED TO HAVE AN EXAMPLE TO CHECK IF AND HOW THIS CAN WORKOUT - BE REMINDED THAT THIS IS THE STANDARD PROCEDURE FOR WERFEN
+
+            This can also include information about the calibrator information.
+
+            - cell-plausible: Boolean indicator of cell observation plausibility
+            - cell-plausible-reason: Reasoning declared for cell observation plausibility
+
+            Attributes:
+            -----------
+        </xs:documentation></xs:annotation>
+        <xs:sequence>
+            <xs:element type="xs:string" name="adjusted-data-id" minOccurs="1" maxOccurs="1"/>
+            <xs:element type="xs:string" name="adjustment-method" minOccurs="0" maxOccurs="1"/>
+            <xs:element type="xs:double" name="adjusted-mfi" minOccurs="0" maxOccurs="1"/>
+            <xs:element type="xs:double" name="mfi-ratio" minOccurs="0" maxOccurs="1"/>
+            <xs:element type="xs:string" name="formula" minOccurs="0" maxOccurs="1"/>
+            <!-- TODO: IS CELL-PLAUSIBLE AN ADJUSTMENT OR AN INTERPRETATION??? CAN THIS BE SET TO true BY DEFAULT?? OR ASSUME THAT empty MEANS true -->
+            <xs:element type="xs:boolean" name="cell-plausible" minOccurs="0" maxOccurs="1"/>
+            <xs:element type="xs:string" name="cell-plausible-reason" minOccurs="0" maxOccurs="1"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -655,7 +768,9 @@
         <xs:restriction base="xs:string">
             <xs:enumeration value="transmembrane-antibody" />
             <xs:enumeration value="self-antigen" />
-			<xs:enumeration value="other" /> -> ADD EXPLANATION FOR other. ALTERNATIVE IS TO KEEP IT FULLY OPEN.
+			<xs:enumeration value="other" />
+            <!-- TODO: ADD EXPLANATION FOR other. ALTERNATIVE IS TO KEEP IT FULLY OPEN.-->
+
         </xs:restriction>
     </xs:simpleType>
 
@@ -674,8 +789,32 @@
         </xs:documentation></xs:annotation>
         <xs:sequence>
             <xs:element type="xs:double" name="adjusted-data-id" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element type="hamlns:bead-classification" name="bead-classification" minOccurs="0" maxOccurs="1"/>
-            <xs:element type="hamlns:bead-rank" name="bead-rank" minOccurs="0" maxOccurs="1"/>
+            <xs:element type="hamlns:classification" name="bead-classification" minOccurs="0" maxOccurs="1"/>
+            <xs:element type="hamlns:rank" name="bead-rank" minOccurs="0" maxOccurs="1"/>
+            <xs:element type="xs:double" name="mfi-threshold" minOccurs="0" maxOccurs="1"/>
+            <xs:element type="xs:double" name="ratio-threshold" minOccurs="0" maxOccurs="1"/>
+            <xs:element type="xs:string" name="classification-entity" minOccurs="0" maxOccurs="1"/>
+            <xs:element type="xs:string" name="interpretation-reason" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- CELL-INTERPRETATION -->
+    <xs:complexType  name="cell-interpretation" >
+        <xs:annotation><xs:documentation>
+            This structure contains an interpretation of a single cell.
+
+            Elements:
+            ----------
+            - adjusted-data-id: A reference to the adjusted-data-id which is used in this calculation
+            - cell-classification: A text Positive/Negative/Borderline/Unspecified classification.
+            - cell-rank: a numerical cell rank specifying if there was reactivity on this cell.
+            - classification-entity: This is the individual or entity who has performed a cell interpretation.
+            - interpretation-reason: This is the reason a cell has been interpreted. For example, a standard MFI threshold (e.g. 500) was used
+        </xs:documentation></xs:annotation>
+        <xs:sequence>
+            <xs:element type="xs:double" name="adjusted-data-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element type="hamlns:classification" name="cell-classification" minOccurs="0" maxOccurs="1"/>
+            <xs:element type="hamlns:rank" name="cell-rank" minOccurs="0" maxOccurs="1"/>
             <xs:element type="xs:double" name="mfi-threshold" minOccurs="0" maxOccurs="1"/>
             <xs:element type="xs:double" name="ratio-threshold" minOccurs="0" maxOccurs="1"/>
             <xs:element type="xs:string" name="classification-entity" minOccurs="0" maxOccurs="1"/>
@@ -716,29 +855,27 @@
     <xs:complexType name="target-cell-observation">
         <xs:annotation><xs:documentation>
             A single cell observation within an e.g. Flow Crossmatch panel.
-            The bead MAY have a specificity, which may be an allele name or a serological specificity.
-            The bead MAY have information about its positive and negative controls.
-            The bead will be a target bead,  a negative-control-bead or a positive-control-bead.
-            A target bead MAY be provided without the 8 control observations.
-            A control bead MUST reference the target bead it relates to.
-            A comprehensive observation declaration of a target bead MAY include:
-            bead-observation (target-bead + working-sample applied)
+            The cell MAY have a specificity, which may be an allele name or a serological specificity.
+            The cell MAY have information about its positive and negative controls.
+            The cell will be a target cell,  a negative-control-cell or a positive-control-cell.
+            A target cell MAY be provided without the 8 control observations.
+            A control cell MUST reference the target cell it relates to.
+            A comprehensive observation declaration of a target cell MAY include:
+            cell-observation (target-cell + working-sample applied)
 
             Elements:
             ----------
-            - bead-info: Structure containing details on the specificity and identifiers of an individual bead
-            - bead-raw-data: Structure containing measured MFI or raw data as measured in the assay.
-            - adjusted-data: Structure containing converted MFIs, formulas used, and interpretations of bead-specific results.
-            - bead-interpretation: Interpretation data on single bead result
-            - control-bead-observation: List of control bead observations (max 8)
-            The 8 expected beads are specified under the control-bead-observation structure.
+            - cell-info: Structure containing details on the specificity and identifiers of an individual cell
+            - cell-raw-data: Structure containing measured MFI or raw data as measured in the assay.
+            - cell-adjusted-data: Structure containing converted MFIs, formulas used, and interpretations of cell-specific results.
+            - cell-interpretation: Interpretation data on single cell result
+            - control-cell-observation: List of control cell observations (max 8)
         </xs:documentation></xs:annotation>
         <xs:sequence>
-            <!-- TODO: Do I want to use the similar structure to bead-observation? I can copy-paste all structures and redefine them -->
-            <xs:element type="hamlns:bead-info" name="bead-info" minOccurs="1" maxOccurs="1" />
-            <xs:element type="hamlns:bead-raw-data" name="bead-raw-data" minOccurs="1" maxOccurs="1" />
-            <xs:element type="hamlns:bead-adjusted-data" name="bead-adjusted-data" minOccurs="0" maxOccurs="unbounded" />
-            <xs:element type="hamlns:bead-interpretation" name="bead-interpretation" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element type="hamlns:cell-info" name="cell-info" minOccurs="1" maxOccurs="1" />
+            <xs:element type="hamlns:cell-raw-data" name="cell-raw-data" minOccurs="1" maxOccurs="1" />
+            <xs:element type="hamlns:cell-adjusted-data" name="cell-adjusted-data" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element type="hamlns:cell-interpretation" name="cell-interpretation" minOccurs="0" maxOccurs="unbounded" />
         </xs:sequence>
     </xs:complexType>
 

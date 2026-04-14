@@ -58,42 +58,7 @@
 
 
 
-                    <!-- Details about the Negative calibrator -->
-                    <control-serum>
-                        <reagant-id>standard_negative_calibrator_serum_1</reagant-id>
-                        <!-- TODO: [ Virtual (dataset provided by mfr) or Physical ]-->
-                        <reagant-type>negative-serum-calibrator</reagant-type>
-                        <sample-date>2024-12-11T17:00:00+01:00</sample-date>
-                        <testing-laboratory>One Lambda (or Immucor/Werfen)</testing-laboratory>
-                    </control-serum>
 
-                    <!-- Details about the Negative control serums -->
-                    <control-serum>
-                        <reagant-id>standard_negative_serum_1</reagant-id>
-                        <reagant-type>negative-control-serum</reagant-type>
-                        <sample-date>2024-12-11T17:00:00+01:00</sample-date>
-                        <testing-laboratory>Utrecht Labs</testing-laboratory>
-                    </control-serum>
-                    <control-serum>
-                        <reagant-id>alternative_negative_serum_2</reagant-id>
-                        <reagant-type>negative-control-serum</reagant-type>
-                        <sample-date>2024-12-11T17:00:00+01:00</sample-date>
-                        <testing-laboratory>Utrecht Labs</testing-laboratory>
-                    </control-serum>
-
-                    <!-- Positive Control Serums -->
-                    <control-serum>
-                        <reagant-id>standard_positive_serum_1</reagant-id>
-                        <reagant-type>positive-control-serum</reagant-type>
-                        <sample-date>2024-12-11T17:00:00+01:00</sample-date>
-                        <testing-laboratory>NMDP Labs</testing-laboratory>
-                    </control-serum>
-                    <control-serum>
-                        <reagant-id>alternative_positive_serum_2</reagant-id>
-                        <reagant-type>positive-control-serum</reagant-type>
-                        <sample-date>2024-12-11T17:00:00+01:00</sample-date>
-                        <testing-laboratory>NMDP Labs</testing-laboratory>
-                    </control-serum>
 
                     <!-- Bead 1 is a Negative Control Bead -->
                     <target-bead-observation>
@@ -140,22 +105,24 @@
                             <adjusted-data-id>1</adjusted-data-id>
                             <adjustment-method>AD-MFI</adjustment-method>
                             <adjusted-mfi>209.7</adjusted-mfi>
-                            <formula>Modified MFI = Raw MFI - Negative Serum target bead</formula>
+                            <formula>AD is the Antigen-density-adjusted MFI.
+                                Modified MFI = Raw MFI / antigen density</formula>
                             <bead-plausible>true</bead-plausible>
-                            <!--<bead-plausible-reason>self-antigen</bead-plausible-reason>-->
                         </bead-adjusted-data>
                         <bead-adjusted-data>
                             <adjusted-data-id>2</adjusted-data-id>
+                            <adjustment-method>BG-MFI</adjustment-method>
                             <adjusted-mfi>302.3</adjusted-mfi>
-                            <formula>Modified MFI = Raw MFI - Negative Control working sample Bead</formula>
+                            <formula>"BG Adjusted" Background adjusted MFI
+                                Modified MFI = Raw MFI - Negative Control working sample Bead</formula>
                             <bead-plausible>true</bead-plausible>
-                            <!--<bead-plausible-reason>self-antigen</bead-plausible-reason>-->
                         </bead-adjusted-data>
                         <bead-adjusted-data>
                             <adjusted-data-id>3</adjusted-data-id>
                             <adjustment-method>MFI/LRA</adjustment-method>
                             <mfi-ratio>3.4</mfi-ratio>
-                            <formula>MFI/LRA</formula>
+                            <formula> MFI is divided by the lowest reactive antigen.
+                                MFI/LRA</formula>
                             <bead-plausible>true</bead-plausible>
                         </bead-adjusted-data>
 
@@ -185,33 +152,6 @@
                             <interpretation-reason>MFI/LRA ratio above ratio cut-off/threshold and raw MFI is above threshold</interpretation-reason>
                         </bead-interpretation>
 
-                        <!-- Control Observations:  +/- Serums -->
-                        <control-bead-observation>
-                            <bead-id>3</bead-id>
-                            <serum-id>standard_negative_serum_1</serum-id>
-                            <description>(target-bead + negative-serum applied)</description>
-                            <bead-raw-data><raw-MFI>16</raw-MFI></bead-raw-data>
-                        </control-bead-observation>
-                        <control-bead-observation>
-                            <bead-id>3</bead-id>
-                            <serum-id>standard_positive_serum_1</serum-id>
-                            <description>(target-bead + positive-serum applied)</description>
-                            <bead-raw-data><raw-MFI>1745</raw-MFI></bead-raw-data>
-                        </control-bead-observation>
-
-                        <!-- Control Observations:  +/- Beads -->
-                        <control-bead-observation>
-                            <bead-id>0</bead-id>
-                            <serum-id>Patient_serum_draw_412</serum-id>
-                            <description>(negative-control-bead + working-sample applied)</description>
-                            <bead-raw-data><raw-MFI>42</raw-MFI></bead-raw-data>
-                        </control-bead-observation>
-                        <control-bead-observation>
-                            <bead-id>1</bead-id>
-                            <serum-id>Patient_serum_draw_412</serum-id>
-                            <description>(positive-control-bead + working-sample applied)</description>
-                            <bead-raw-data><raw-MFI>1666</raw-MFI></bead-raw-data>
-                        </control-bead-observation>
 
                     </target-bead-observation>
 

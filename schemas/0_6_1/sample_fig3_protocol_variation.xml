@@ -6,40 +6,15 @@
         <root>123.445a</root>
         <extension>HAML Document #234134</extension>
     </haml-id>
-
     <reporting-center>University Medical Center Utrecht, HLA Laboratory</reporting-center>
-    <requisition-reason>This is intended as a workup for use in a kidney transplantation.</requisition-reason>
 
     <patient>
         <patient-id>Patient_440223</patient-id>
-
         <sample>
             <sample-id>Patient_serum_draw_412</sample-id>
-            <sample-date>2024-12-11T09:00:00+01:00</sample-date>
-            <sample-type>Serum</sample-type>
-            <testing-laboratory>ACME Labs</testing-laboratory>
 
             <working-sample>
                 <working-sample-id>Patient_serum_prep_123</working-sample-id>
-                <treatment-date>2024-12-11T17:00:00+01:00</treatment-date>
-                <testing-laboratory>ACME Labs - Subdivision</testing-laboratory>
-
-                <!-- Several treatments were applied to this sample -->
-                <treatment>
-                    <method>EDTA</method>
-                </treatment>
-                <treatment>
-                    <method>Serum Cleaning</method>
-                </treatment>
-                <treatment>
-                    <method>Adsorption</method>
-                </treatment>
-                <treatment>
-                    <method>Dilution</method>
-                    <ratio>1:1000</ratio>
-                    <diluent>PBS</diluent>
-                </treatment>
-
                 <assay>
                     <assay-id>assay-1</assay-id>
                     <run-id>unique_id_from_instrument</run-id>
@@ -47,6 +22,9 @@
                     <!-- Details about the kit -->
                     <assay-kit>
                         <assay-type>Solid Phase Assay</assay-type>
+                        <protocol-variations>
+                            <secondary-antibody>C1q</secondary-antibody>
+                        </protocol-variations>
                         <catalog-number>LS1A04_extended</catalog-number>
                         <lot-number>12345</lot-number>
                         <kit-manufacturer>One_Lambda</kit-manufacturer>
@@ -54,6 +32,7 @@
                         <interpretation-software>HLA_Fusion</interpretation-software>
                         <interpretation-software-version>4.1</interpretation-software-version>
                         <raw-MFI-divider>0.56</raw-MFI-divider>
+
                     </assay-kit>
 
 

@@ -9,7 +9,8 @@ def validate_against_schema(schema_text, xml_text):
         schema_tree = etree.XMLSchema(etree.XML(schema_text))
         xml_parser = etree.XMLParser(schema=schema_tree)
         try:
-            xml_tree = etree.fromstring(xml_text, xml_parser)
+            # Encode the text to avoid encoding warnings
+            xml_tree = etree.fromstring(xml_text.encode('utf-8'), xml_parser)
             # If we get this far, the XML has validated successfully.
             return ('Valid')
         except etree.XMLSyntaxError as err:

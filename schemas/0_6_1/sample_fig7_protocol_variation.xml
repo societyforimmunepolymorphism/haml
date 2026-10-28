@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<haml xmlns="urn:HAML.Namespace"
+      version="0.6.1">
+    <patient>
+        <patient-id>Patient_440223</patient-id>
+        <sample>
+            <sample-id>Patient_serum_draw_412</sample-id>
+            <working-sample>
+                <working-sample-id>Patient_serum_prep_123</working-sample-id>
+                <assay>
+                    <assay-id>1</assay-id>
+
+                    <assay-kit>
+                        <assay-type>Solid Phase Assay</assay-type>
+                        <detection-reagent-catalog>
+                            <catalog-number>C1Q.582995.2239</catalog-number>
+                            <detection-reagent>C1Q</detection-reagent>
+                            <kit-description>
+                                C1q modification of standard single antigen bead assay, incubated at 37C
+                            </kit-description>
+                        </detection-reagent-catalog>
+                        <protocol-variations>
+                            <post-serum-wash-count>4</post-serum-wash-count>
+                            <variation-description>
+                                Extra wash step added when removing serum from beads after the
+                                serum-bead incubation for a total of 4 washes
+                            </variation-description>
+                        </protocol-variations>
+                    </assay-kit>
+
+                </assay>
+            </working-sample>
+        </sample>
+    </patient>
+
+</haml>
+
+

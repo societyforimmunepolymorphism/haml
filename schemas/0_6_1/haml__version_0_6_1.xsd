@@ -53,7 +53,7 @@
             http://www.oid-info.com/faq.htm
             http://www.hl7.org/oid/index.cfm
 
-            Attributes:
+            Child Elements
             -----------
             - root:  Unique publicly registered identifier for the HAML
                 creator's organization.
@@ -148,9 +148,13 @@
             - accreditation-institution: Name or ID of an accreditation institution
             - signing-authority: Exactly one signing authority is to be provided for the document. This individual
                 is authoritative on signing this document.
-            - results-interpreters: A structure containing individuals responsible for interpreting the results
-                of assays within this document.
-            - performers: A structure containing individuals responsible for performing the assays within this document.
+            - clinical-lab-director: Name or ID of the lab director overseeing the work resulting in this document.
+            - performer: An individual responsible for performing the assays within this document.
+                Multiple performers can be reported
+            - results-interpreter: An individual responsible for interpreting the results
+                of assays within this document. Multiple results-interpreters can be reported
+            - regulatory-statement: A statement describing the regulatory or accreditation bodies,
+                and which requirements are met within this document.
         </xs:documentation></xs:annotation>
         <xs:all>
             <xs:element name="report-id" type="xs:string" minOccurs="1" maxOccurs="1" />
@@ -163,6 +167,7 @@
             <xs:element name="clinical-lab-director" type="hamlns:clinical-lab-director" minOccurs="0" maxOccurs="1" />
             <xs:element name="performer" type="hamlns:performer" minOccurs="0" maxOccurs="unbounded" />
             <xs:element name="results-interpreter" type="hamlns:results-interpreter" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="regulatory-statement" type="xs:string" minOccurs="0" maxOccurs="1" />
         </xs:all>
     </xs:complexType>
 
@@ -329,7 +334,7 @@
             Elements:
             -----------
             - sample-id: A string with a unique identifier for this sample
-            - sample-datetime: A dateTime which identifies the date and (optionally) the time when a sample was drawn.
+            - sample-date: A dateTime which identifies the date and (optionally) the time when a sample was drawn.
             - sample-type: Free-form text, usually this should be "Serum"
             - testing-laboratory: A string with a unique identifier for the laboratory where this sample was drawn
             - working-sample: The working sample specifies treatments which were applied to the sample.
@@ -391,7 +396,7 @@
             Elements:
             -----------
             - working-sample-id: A string with a unique identifier for this serum. Must be unique within this document
-            - sample-date: A dateTime which identifies the date and (optionally) the time when a sample treatment was performed
+            - treatment-date: A dateTime which identifies the date and (optionally) the time when a sample treatment was performed
             - testing-laboratory: A string with a unique identifier for the laboratory where this sample treatment was performed
             - treatment: A sequential list of treatments applied to the patient sample
             - assay: Details of the solid phase assay applied to this serum
@@ -482,12 +487,14 @@
                 or specialization of the specific kit.
             - catalog-number: Identifier of the catalog, probably as provided by the manufacturer
             - lot-number: Identifier of the lot from within this catalog
+            - detection-reagent: Description or identifier of an antibody or reagent used in detection of reactivity
         </xs:documentation></xs:annotation>
         <xs:all>
             <xs:element name="kit-manufacturer" type="xs:string" minOccurs="0" maxOccurs="1" />
             <xs:element name="kit-description" type="xs:string" minOccurs="0" maxOccurs="1" />
             <xs:element name="catalog-number" type="xs:string" minOccurs="0" maxOccurs="1" />
             <xs:element name="lot-number" type="xs:string" minOccurs="0" maxOccurs="1" />
+            <xs:element name="detection-reagent" type="xs:string" minOccurs="0" maxOccurs="1" />
         </xs:all>
     </xs:complexType>
 
@@ -706,12 +713,15 @@
     <!-- ADJUSTED-DATA -->
     <xs:complexType name="adjusted-data">
         <xs:annotation><xs:documentation>
-            Adjusted MFI results after formula and controls applied
+            Adjusted MFI results after formula and controls applied for a bead or cell
 
             Elements:
             ----------
             - adjusted-data-id: ID, unique within this specific target-bead-observation/target-cell-observation
+            - adjustment-method: A text description of the method used in this adjustment, or description of the
             - adjusted-mfi:  Adjusted result after formula and controls applied
+            - mfi-ratio: A ratio which was calculated, usually a MFI divided by the MFI of another bead,
+                likely a control bead or another bead within the panel.
             - formula: Declaration of formula applied to derive adjusted MFI or MFI ratio. Freeform text, for example:
 
                 Modified MFI =
@@ -788,7 +798,7 @@
                 For example, a standard MFI threshold (e.g. 500) was used
         </xs:documentation></xs:annotation>
         <xs:all>
-            <xs:element type="xs:double" name="adjusted-data-id" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element type="xs:string" name="adjusted-data-id" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element type="hamlns:classification" name="bead-classification" minOccurs="0" maxOccurs="1"/>
             <xs:element type="hamlns:cdc-score" name="bead-rank" minOccurs="0" maxOccurs="1"/>
             <xs:element type="xs:double" name="mfi-threshold" minOccurs="0" maxOccurs="1"/>
@@ -844,7 +854,7 @@
             ----------
             - bead-info: Structure containing details on the specificity and identifiers of an individual bead
             - bead-raw-data: Structure containing measured MFI or raw data as measured in the assay.
-            - adjusted-data: Structure containing converted MFIs, formulas used,
+            - bead-adjusted-data: Structure containing converted MFIs, formulas used,
                 and computation methodology of bead-specific adjusted data.
             - bead-interpretation: Interpretation and results on single bead result
         </xs:documentation></xs:annotation>
@@ -896,9 +906,8 @@
             - interpretation-context-comment: Further commentary on clinical interpretation of the assay.
                 Ex. "In the context of bone marrow transfusion we have identified these unacceptable
                 specificities"
-            - positive-specificities: PL String of positive antibody reactivity
-            - questionable-specificities: PL String of questionable antibody reactivity
-            - negative-specificities: PL String of negative antibody reactivity
+            - specificities: PL String of antibody reactivity. Specificities can be reported multiple times,
+                wherein positive, negative, or questionable antibody reactivity can be separately specified.
             - reject-assay: Boolean if the assay was rejected or not.
             - reject-reason: Freeform Text describing why this assay result was rejected, and which entity made
                 the determination to reject the assay

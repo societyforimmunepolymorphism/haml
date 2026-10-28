@@ -11,15 +11,14 @@
                 <assay>
                     <assay-id>1</assay-id>
                     <assay-date>2026-04-18T10:15:00Z</assay-date>
-
                     <target-bead-observation>
-
                         <bead-info>
                             <bead-id>LS1A04-001</bead-id>
                             <bead-type>target</bead-type>
                             <HLA-target-type>who#3.61.0#HLA-A*02:01</HLA-target-type>
                             <relative-antigen-density>1.00</relative-antigen-density>
                         </bead-info>
+
                         <bead-raw-data>
                             <raw-MFI>8234</raw-MFI>
                             <bead-count>112</bead-count>
@@ -29,12 +28,12 @@
                             <adjusted-data-id>1</adjusted-data-id>
                             <adjustment-method>AD-MFI</adjustment-method>
                             <adjusted-mfi>8010</adjusted-mfi>
-                            <formula>Background-adjusted MFI = bead raw MFI - negative control background</formula>
+                            <formula>
+                                Background-adjusted MFI = bead raw MFI - negative control background
+                            </formula>
                             <plausible>true</plausible>
                         </bead-adjusted-data>
-
                     </target-bead-observation>
-
                 </assay>
             </working-sample>
         </sample>

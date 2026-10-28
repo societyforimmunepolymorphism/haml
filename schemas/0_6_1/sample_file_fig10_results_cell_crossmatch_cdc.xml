@@ -17,9 +17,11 @@
                             <cell-id>BAG88295</cell-id>
                             <cell-type>target</cell-type>
                             <cell-source>donor T cells</cell-source>
-                            <HLA-target-type>who#3.62.0#HLA-A*02:01+HLA-A*24:02+HLA-B*07:02+HLA-B*08:01+HLA-C*07:01+
+                            <HLA-target-type>
+                                who#3.62.0#HLA-A*02:01+HLA-A*24:02+HLA-B*07:02+HLA-B*08:01+HLA-C*07:01+
                                 HLA-C*07:02+HLA-DRB1*03:01+HLA-DRB1*07:01+HLA-DQB1*02:01~HLA-DQA1*05:01+
-                                HLA-DQB1*03:03~HLA-DQA1*03:01</HLA-target-type>
+                                HLA-DQB1*03:03~HLA-DQA1*03:01
+                            </HLA-target-type>
                         </cell-info>
 
                         <cell-raw-data>
@@ -36,8 +38,12 @@
                         <cell-interpretation>
                             <adjusted-data-id>ADJ-BAG88296-T-1</adjusted-data-id>
                             <cell-classification>Positive</cell-classification>
-                            <classification-entity>Local Laboratory rule set</classification-entity>
-                            <interpretation-reason>Adjusted MFI above positivity threshold for T cell flow crossmatch</interpretation-reason>
+                            <classification-entity>
+                                Local Laboratory rule set
+                            </classification-entity>
+                            <interpretation-reason>
+                                Adjusted MFI above positivity threshold for T cell flow crossmatch
+                            </interpretation-reason>
                         </cell-interpretation>
 
                     </target-cell-observation>

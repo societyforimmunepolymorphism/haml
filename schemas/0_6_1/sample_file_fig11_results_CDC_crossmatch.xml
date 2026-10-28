@@ -33,9 +33,10 @@
                             <cell-classification>Positive</cell-classification>
                             <cdc-score>6</cdc-score>
                             <classification-entity>Local Laboratory rule set</classification-entity>
-                            <interpretation-reason>Adjusted cytotoxicity above positivity threshold for T cell flow crossmatch</interpretation-reason>
+                            <interpretation-reason>
+                                Adjusted cytotoxicity above positivity threshold for T cell CDC crossmatch
+                            </interpretation-reason>
                         </cell-interpretation>
-
                     </target-cell-observation>
                 </assay>
             </working-sample>

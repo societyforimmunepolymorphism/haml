@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<haml xmlns="urn:HAML.Namespace"
+      version="0.6.1">
+
+    <haml-id>
+        <root>123.445a</root>
+        <extension>HAML Document #234134</extension>
+    </haml-id>
+
+    <reporting-center>University Medical Center Utrecht, HLA Laboratory</reporting-center>
+    <requisition-reason>This analysis was performed as a workup for a kidney transplantation.</requisition-reason>
+
+    <patient>
+        <patient-id>Patient_440223</patient-id>
+        <diagnostic-report>
+            <report-id>Report_3492034923</report-id>
+            <accreditation-institution>
+                <accreditation-body>ASHI</accreditation-body>
+                <accreditation-number>23455445</accreditation-number>
+            </accreditation-institution>
+
+            <signing-authority>
+                <signing-authority-id>123</signing-authority-id>
+                <signing-authority-name>Eric S.</signing-authority-name>
+                <institution>UMC Utrecht TI Lab</institution>
+                <role>Lab Director</role>
+            </signing-authority>
+
+            <results-interpreter>
+                <interpreter-id>456</interpreter-id>
+                <interpreter-type>Technician Interpretation</interpreter-type>
+                <interpreter-name>Theodore Technician</interpreter-name>
+                <institution>UMC Utrecht TI Lab</institution>
+                <role>Lab Technician</role>
+            </results-interpreter>
+
+            <performer>
+                <performer-id>789</performer-id>
+                <performer-type>Validation</performer-type>
+                <performer-name>Mathijs G</performer-name>
+                <institution>ACME Labs</institution>
+                <role>Quality Expert</role>
+            </performer>
+
+            <performer>
+                <performer-id>987</performer-id>
+                <performer-type>Requestor</performer-type>
+                <performer-name>David W</performer-name>
+                <institution>NMDP</institution>
+                <role>FHIR Expert</role>
+            </performer>
+
+
+
+        </diagnostic-report>
+
+
+
+
+
+    </patient>
+</haml>
+
+

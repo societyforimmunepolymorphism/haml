@@ -16,14 +16,18 @@
             <sample-id>9862604001</sample-id>
             <sample-date>2024-12-11</sample-date>
             <sample-type>Serum</sample-type>
-            <testing-laboratory>International Histocompatibility Laboratory</testing-laboratory>
+            <testing-laboratory>
+                International Histocompatibility Laboratory
+            </testing-laboratory>
 
             <working-sample>
                 <working-sample-id>Patient_serum_prep_123</working-sample-id>
                 <treatment-date>2024-12-11</treatment-date>
                 <treatment>
                     <method>EDTA</method>
-                    <method-description>EDTA serum treated before antibody testing</method-description>
+                    <method-description>
+                        EDTA serum treated before antibody testing
+                    </method-description>
                 </treatment>
             </working-sample>
         </sample>

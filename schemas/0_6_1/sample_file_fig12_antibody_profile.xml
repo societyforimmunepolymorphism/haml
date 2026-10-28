@@ -11,18 +11,25 @@
 
                 <specificities>
                     <specificities-type>Acceptable</specificities-type>
-                    <specificities-string>who#2026-04-19#HLA-B*07:02+HLA-DRB1*15:01</specificities-string>
+                    <specificities-string>
+                        who#2026-04-19#HLA-B*07:02+HLA-DRB1*15:01
+                    </specificities-string>
                 </specificities>
 
                 <specificities>
                     <specificities-type>Unacceptable</specificities-type>
-                    <specificities-string>who#2026-04-19#HLA-A*02:01+HLA-DQB1*06:02</specificities-string>
+                    <specificities-string>
+                        who#2026-04-19#HLA-A*02:01+HLA-DQB1*06:02
+                    </specificities-string>
                 </specificities>
 
-                <interpretation-context>Patient-level antibody interpretation for donor selection</interpretation-context>
+                <interpretation-context>
+                    Patient-level antibody interpretation for donor selection
+                </interpretation-context>
 
                 <interpretation-context-comment>
-                    Acceptable and unacceptable specificities were assigned after review of current and prior antibody assay results in the clinical transplant context.
+                    Acceptable and unacceptable specificities were assigned after review of current
+                    and prior antibody assay results in the clinical transplant context.
                 </interpretation-context-comment>
             </patient-antibody-profile>
         </diagnostic-report>

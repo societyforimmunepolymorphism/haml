@@ -20,7 +20,7 @@
                         </cell-info>
 
                         <cell-raw-data>
-                            <cell-count>1000</cell-count>
+                            <cell-events>1000</cell-events>
                             <raw-percent-cytotoxicity>72</raw-percent-cytotoxicity>
                         </cell-raw-data>
 

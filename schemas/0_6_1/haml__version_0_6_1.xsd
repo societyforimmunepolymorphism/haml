@@ -698,15 +698,15 @@
 
             Elements:
             ----------
-            - raw-MFI: Raw MFI result for this cell and serum
+            - raw-value: Raw measured value, likely an MFI or Channel Value result for this cell and serum
                 No modifications or calculations have been performed on this measurement.
             - raw-percent-cytotoxicity: Percentage of cells which died during an analysis
-            - cell-count: How many cells were counted for this observation
+            - cell-events: How many cells were counted for this observation
         </xs:documentation></xs:annotation>
         <xs:all>
-            <xs:element type="xs:double" name="raw-MFI" minOccurs="0" maxOccurs="1"/>
+            <xs:element type="xs:double" name="raw-value" minOccurs="0" maxOccurs="1"/>
             <xs:element type="xs:double" name="raw-percent-cytotoxicity" minOccurs="0" maxOccurs="1"/>
-            <xs:element type="xs:double" name="cell-count" minOccurs="0" maxOccurs="1"/>
+            <xs:element type="xs:double" name="cell-events" minOccurs="0" maxOccurs="1"/>
         </xs:all>
     </xs:complexType>
 
@@ -719,7 +719,8 @@
             ----------
             - adjusted-data-id: ID, unique within this specific target-bead-observation/target-cell-observation
             - adjustment-method: A text description of the method used in this adjustment, or description of the
-            - adjusted-mfi:  Adjusted result after formula and controls applied
+            - adjusted-mfi:  Adjusted result after formula and controls applied. This field also is used for
+                channel shift information in flow cytometry.
             - mfi-ratio: A ratio which was calculated, usually a MFI divided by the MFI of another bead,
                 likely a control bead or another bead within the panel.
             - formula: Declaration of formula applied to derive adjusted MFI or MFI ratio. Freeform text, for example:
@@ -822,7 +823,8 @@
             - cdc-score: a numerical rank based on percentage of cytotoxicity
                 specifying if there was reactivity on this well.
             - mfi-threshold: Use this field to specify the numerical
-                MFI threshold/cutoff which was used to classify a cell. (e.g. 500)
+                MFI threshold/cutoff which was used to classify a cell. (e.g. 500).
+                This threshold is also used as a channel shift in the context of flow crossmatch
             - ratio-threshold: Use this field to specify the numerical
                 MFI ratio threshold/cutoff which was used to classify a cell.
             - classification-entity: This is the individual, software, or entity

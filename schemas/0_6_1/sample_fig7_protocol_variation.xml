@@ -19,13 +19,12 @@
                                 C1q modification of standard single antigen bead assay, incubated at 37C
                             </kit-description>
                         </detection-reagent-catalog>
-                        <protocol-variations>
-                            <post-serum-wash-count>4</post-serum-wash-count>
+                        <protocol-variation>
                             <variation-description>
-                                Extra wash step added when removing serum from beads after the
+                                Extra wash step added (Total of 4) when removing serum from beads after the
                                 serum-bead incubation for a total of 4 washes
                             </variation-description>
-                        </protocol-variations>
+                        </protocol-variation>
                     </assay-kit>
 
                 </assay>

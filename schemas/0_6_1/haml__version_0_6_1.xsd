@@ -168,6 +168,7 @@
             <xs:element name="performer" type="hamlns:performer" minOccurs="0" maxOccurs="unbounded" />
             <xs:element name="results-interpreter" type="hamlns:results-interpreter" minOccurs="0" maxOccurs="unbounded" />
             <xs:element name="regulatory-statement" type="xs:string" minOccurs="0" maxOccurs="1" />
+            <xs:element name="dsa-specificities" type="hamlns:dsa-specificities" minOccurs="0" maxOccurs="1" />
         </xs:all>
     </xs:complexType>
 
@@ -295,12 +296,14 @@
                 for example "Kidney Transplantation Workup"
             - interpretation-context-comment: More details regarding the interpretation context
             - specificities: A collection of the antigenic specificities as determined by the assays
+            - dsa-specificities: TODO!
         </xs:documentation></xs:annotation>
         <xs:all>
             <xs:element name="patient-antibody-date" type="hamlns:date" minOccurs="0" maxOccurs="1" />
             <xs:element name="interpretation-context" type="xs:string" minOccurs="0" maxOccurs="1" />
             <xs:element name="interpretation-context-comment" type="xs:string" minOccurs="0" maxOccurs="1" />
             <xs:element name="specificities" type="hamlns:specificities" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="dsa-specificities" type="hamlns:dsa-specificities" minOccurs="0" maxOccurs="unbounded" />
         </xs:all>
     </xs:complexType>
 
@@ -323,6 +326,24 @@
             <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1" />
         </xs:all>
     </xs:complexType>
+
+    <!-- DSA-SPECIFICITIES -->
+    <xs:complexType name="dsa-specificities">
+        <xs:annotation><xs:documentation>
+            Donor Specific Antibody Specificities, as
+
+            Elements:
+            -----------
+            <!--TODO! Element descriptions -->
+        </xs:documentation></xs:annotation>
+        <xs:all>
+            <!--<xs:element name="specificities-date" type="hamlns:date" minOccurs="0" maxOccurs="1" />
+            <xs:element name="specificities-type" type="xs:string" minOccurs="0" maxOccurs="1" />
+            <xs:element name="specificities-string" type="hamlns:hla-plstring" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1" />-->
+        </xs:all>
+    </xs:complexType>
+
 
     <!-- SAMPLE -->
     <xs:complexType name="sample">
@@ -467,7 +488,7 @@
             <xs:element name="assay-type" type="xs:string" minOccurs="0" maxOccurs="1" />
             <xs:element name="assay-catalog" type="hamlns:catalog" minOccurs="0" maxOccurs="1" />
             <xs:element name="detection-reagent-catalog" type="hamlns:catalog" minOccurs="0" maxOccurs="1" />
-            <xs:element name="protocol-variations" type="hamlns:protocol-variations" minOccurs="0" maxOccurs="1" />
+            <xs:element name="protocol-variation" type="hamlns:protocol-variation" minOccurs="0" maxOccurs="unbounded" />
             <xs:element name="interpretation-software" type="xs:string" minOccurs="0" maxOccurs="1" />
             <xs:element name="interpretation-software-version" type="xs:string" minOccurs="0" maxOccurs="1" />
             <xs:element type="xs:double" name="raw-MFI-divider" minOccurs="0" maxOccurs="1" />
@@ -498,8 +519,8 @@
         </xs:all>
     </xs:complexType>
 
-    <!-- PROTOCOL-VARIATIONS -->
-    <xs:complexType name="protocol-variations">
+    <!-- PROTOCOL-VARIATION -->
+    <xs:complexType name="protocol-variation">
         <xs:annotation><xs:documentation>
             This structure contains information about modifications from standard protocols as defined by manufacturer,
             such as wash count, antiglobulin use, and serum treatment details, absorption.
@@ -510,14 +531,12 @@
 
             Elements:
             ----------
-            - post-serum-wash-count: how many times the cells were washed after serum incubation
             - variation-type: A short definition of the type of variation which was applied to a protocol,
                 when deviating from a standard vendor-specified protocol
 			- variation-description:  A long description of the type of variation which was applied to a protocol,
                 when deviating from a standard vendor-specified protocol
         </xs:documentation></xs:annotation>
         <xs:all>
-            <xs:element name="post-serum-wash-count" type="xs:int" minOccurs="0" maxOccurs="1" />
             <xs:element name="variation-type" type="xs:string" minOccurs="0" maxOccurs="1" />
             <xs:element name="variation-description" type="xs:string" minOccurs="0" maxOccurs="1" />
         </xs:all>

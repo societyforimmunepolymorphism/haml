@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<haml xmlns="urn:HAML.Namespace"
+      version="0.6.1">
+
+    <haml-id>
+        <root>123.445a</root>
+        <extension>HAML Document #234134</extension>
+    </haml-id>
+
+    <patient>
+        <patient-id>Patient_440223</patient-id>
+
+        <sample>
+            <working-sample>
+                <working-sample-id>64466</working-sample-id>
+                <assay>
+                    <assay-id>class_I</assay-id>
+
+                    <target-bead-observation>
+                        <bead-info>
+                            <bead-id>LS1A04-001</bead-id>
+                            <bead-type>target</bead-type>
+                            <HLA-target-type>who#3.61.0#HLA-A*24:02</HLA-target-type>
+                            <relative-antigen-density>1.00</relative-antigen-density>
+                        </bead-info>
+
+                        <bead-raw-data>
+                            <raw-MFI>9489</raw-MFI>
+                        </bead-raw-data>
+
+                        <bead-adjusted-data>
+                            <adjusted-data-id>1</adjusted-data-id>
+                            <adjustment-method>AD-MFI</adjustment-method>
+                            <adjusted-mfi>8820</adjusted-mfi>
+                            <formula>
+                                Background-adjusted MFI = bead raw MFI - negative control background
+                            </formula>
+                            <plausible>true</plausible>
+                        </bead-adjusted-data>
+                        <bead-interpretation>
+                            <adjusted-data-id>1</adjusted-data-id>
+                            <bead-classification>Positive</bead-classification>
+                            <mfi-threshold>1000</mfi-threshold>
+                        </bead-interpretation>
+                    </target-bead-observation>
+
+                    <target-bead-observation>
+                        <bead-info>
+                            <bead-id>LS1A04-002</bead-id>
+                            <bead-type>target</bead-type>
+                            <HLA-target-type>who#3.61.0#HLA-A*24:03</HLA-target-type>
+                            <relative-antigen-density>1.00</relative-antigen-density>
+                        </bead-info>
+
+                        <bead-raw-data>
+                            <raw-MFI>9532</raw-MFI>
+                        </bead-raw-data>
+
+                        <bead-adjusted-data>
+                            <adjusted-data-id>1</adjusted-data-id>
+                            <adjustment-method>AD-MFI</adjustment-method>
+                            <adjusted-mfi>8913</adjusted-mfi>
+                            <formula>
+                                Background-adjusted MFI = bead raw MFI - negative control background
+                            </formula>
+                            <plausible>true</plausible>
+                        </bead-adjusted-data>
+                        <bead-interpretation>
+                            <adjusted-data-id>1</adjusted-data-id>
+                            <bead-classification>Positive</bead-classification>
+                            <mfi-threshold>1000</mfi-threshold>
+                        </bead-interpretation>
+                    </target-bead-observation>
+
+                </assay>
+                <assay>
+                    <assay-id>class_II</assay-id>
+                    <target-bead-observation>
+                        <bead-info>
+                            <bead-id>LS1A04-201</bead-id>
+                            <bead-type>target</bead-type>
+                            <HLA-target-type>who#3.61.0#HLA-DRB1*07:01</HLA-target-type>
+                            <relative-antigen-density>1.00</relative-antigen-density>
+                        </bead-info>
+
+                        <bead-raw-data>
+                            <raw-MFI>9259</raw-MFI>
+                        </bead-raw-data>
+
+                        <bead-adjusted-data>
+                            <adjusted-data-id>1</adjusted-data-id>
+                            <adjustment-method>AD-MFI</adjustment-method>
+                            <adjusted-mfi>8917</adjusted-mfi>
+                            <formula>
+                                Background-adjusted MFI = bead raw MFI - negative control background
+                            </formula>
+                            <plausible>true</plausible>
+                        </bead-adjusted-data>
+                        <bead-interpretation>
+                            <adjusted-data-id>1</adjusted-data-id>
+                            <bead-classification>Positive</bead-classification>
+                            <mfi-threshold>1000</mfi-threshold>
+                        </bead-interpretation>
+                    </target-bead-observation>
+
+                    <target-cell-observation>
+                        <cell-info>
+                            <cell-id>Donor Material 1</cell-id>
+                            <cell-type>target</cell-type>
+                            <cell-source>donor 23636476 cells</cell-source>
+                            <HLA-target-type>
+                                who#3.62.0#HLA-A*02:01+HLA-A*24:02+HLA-B*07:02+HLA-B*08:01+HLA-C*07:01+
+                                HLA-C*07:02+HLA-DRB1*03:01+HLA-DRB1*07:01+HLA-DQB1*02:01~HLA-DQA1*05:01+
+                                HLA-DQB1*03:03~HLA-DQA1*02:01
+                            </HLA-target-type>
+                        </cell-info>
+                    </target-cell-observation>
+
+                </assay>
+            </working-sample>
+        </sample>
+
+    <transplant-source>
+        <transplant-source-id>ET_18473</transplant-source-id>
+        <evaluation-date>2026-04-27</evaluation-date>
+        <transplant-date>2026-04-28</transplant-date>
+        <HLA-target-type>
+            who#3.62.0#HLA-A*02:01+HLA-A*24:02+HLA-B*07:02+HLA-B*08:01+HLA-C*07:01+
+            HLA-C*07:02+HLA-DRB1*03:01+HLA-DRB1*07:01+HLA-DQB1*02:01~HLA-DQA1*05:01+
+            HLA-DQB1*03:03~HLA-DQA1*02:01
+        </HLA-target-type>
+        <transplant-category>Kidney</transplant-category>
+    </transplant-source>
+
+    <diagnostic-report>
+        <transplant-source-id>ET_18473</transplant-source-id>
+
+        <report-id>123</report-id>
+        <patient-antibody-profile>
+            <dsa-specificities>
+                <dsa-summary>who#2026-04-19#A24+DR7</dsa-summary>
+
+                <dsa-specificity>
+                    <specificities-string>who#2026-04-19#A24</specificities-string>
+                    <dsa-description>DeNovo</dsa-description>
+                    <bead-ref>
+                        <assay-id>class_I</assay-id>
+                        <bead-id>LS1A04-001</bead-id>
+                        <reported-mfi>8820</reported-mfi>
+                    </bead-ref>
+                    <bead-ref>
+                        <assay-id>class_I</assay-id>
+                        <bead-id>LS1A04-002</bead-id>
+                        <reported-mfi>8820</reported-mfi>
+                    </bead-ref>
+                </dsa-specificity>
+
+                <dsa-specificity>
+                    <bead-ref>
+                        <assay-id>class_II</assay-id>
+                        <bead-id>LS1A04-201</bead-id>
+                        <specificities-string>who#2026-04-19#DR7</specificities-string>
+                        <dsa-description>Pre-Existing</dsa-description>
+                    </bead-ref>
+                </dsa-specificity>
+            </dsa-specificities>
+        </patient-antibody-profile>
+    </diagnostic-report>
+
+    </patient>
+</haml>
+
+

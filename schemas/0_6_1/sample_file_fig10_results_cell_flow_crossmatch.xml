@@ -55,7 +55,6 @@
                         <cell-raw-data>
                             <cell-events>5000</cell-events>
                             <raw-value>250</raw-value>
-
                         </cell-raw-data>
 
                         <cell-adjusted-data>
@@ -63,12 +62,6 @@
                             <adjusted-mfi>150</adjusted-mfi>
                             <formula>Sample Raw Channel Value - Negative Serum Raw Channel Value</formula>
                         </cell-adjusted-data>
-                        <cell-adjusted-data>
-                            <adjusted-data-id>ADJ-BAG88296-T-2</adjusted-data-id>
-                            <adjusted-mfi>2.5</adjusted-mfi>
-                            <formula>Sample Raw Channel Value / Negative Serum Raw Channel Value</formula>
-                        </cell-adjusted-data>
-
                         <cell-interpretation>
                             <adjusted-data-id>ADJ-BAG88296-T-1</adjusted-data-id>
                             <cell-classification>Positive</cell-classification>
@@ -81,6 +74,11 @@
                             </interpretation-reason>
                         </cell-interpretation>
 
+                        <cell-adjusted-data>
+                            <adjusted-data-id>ADJ-BAG88296-T-2</adjusted-data-id>
+                            <adjusted-mfi>2.5</adjusted-mfi>
+                            <formula>Sample Raw Channel Value / Negative Serum Raw Channel Value</formula>
+                        </cell-adjusted-data>
                         <cell-interpretation>
                             <adjusted-data-id>ADJ-BAG88296-T-2</adjusted-data-id>
                             <cell-classification>Positive</cell-classification>

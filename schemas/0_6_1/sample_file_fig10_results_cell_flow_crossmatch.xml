@@ -4,6 +4,34 @@
     <patient>
         <patient-id>Patient_440223</patient-id>
         <sample>
+            <sample-id>Negative Control Serum</sample-id>
+            <sample-type>Negative Control</sample-type>
+            <working-sample>
+                <working-sample-id>Negative_Control_1</working-sample-id>
+                <assay>
+                    <assay-id>assay-1</assay-id>
+                    <target-cell-observation>
+                        <cell-info>
+                            <cell-id>NegControl-1</cell-id>
+                            <cell-type>target</cell-type>
+                            <cell-source>donor T cells</cell-source>
+                            <HLA-target-type>
+                                who#3.62.0#HLA-A*02:01+HLA-A*24:02+HLA-B*07:02+HLA-B*08:01+HLA-C*07:01+
+                                HLA-C*07:02+HLA-DRB1*03:01+HLA-DRB1*07:01+HLA-DQB1*02:01~HLA-DQA1*05:01+
+                                HLA-DQB1*03:03~HLA-DQA1*02:01
+                            </HLA-target-type>
+                        </cell-info>
+
+                        <cell-raw-data>
+                            <cell-events>5000</cell-events>
+                            <raw-value>100</raw-value>
+                        </cell-raw-data>
+                    </target-cell-observation>
+
+                </assay>
+            </working-sample>
+        </sample>
+        <sample>
             <sample-id>Patient_serum_draw_412</sample-id>
 
             <working-sample>
@@ -20,29 +48,48 @@
                             <HLA-target-type>
                                 who#3.62.0#HLA-A*02:01+HLA-A*24:02+HLA-B*07:02+HLA-B*08:01+HLA-C*07:01+
                                 HLA-C*07:02+HLA-DRB1*03:01+HLA-DRB1*07:01+HLA-DQB1*02:01~HLA-DQA1*05:01+
-                                HLA-DQB1*03:03~HLA-DQA1*03:01
+                                HLA-DQB1*03:03~HLA-DQA1*02:01
                             </HLA-target-type>
                         </cell-info>
 
                         <cell-raw-data>
-                            <cell-count>5000</cell-count>
-                            <raw-MFI>1450</raw-MFI>
+                            <cell-events>5000</cell-events>
+                            <raw-value>250</raw-value>
+
                         </cell-raw-data>
 
                         <cell-adjusted-data>
                             <adjusted-data-id>ADJ-BAG88296-T-1</adjusted-data-id>
-                            <adjusted-mfi>1180</adjusted-mfi>
-                            <formula>Adjusted MFI = target-cell-raw MFI - negative control raw MFI</formula>
+                            <adjusted-mfi>150</adjusted-mfi>
+                            <formula>Sample Raw Channel Value - Negative Serum Raw Channel Value</formula>
+                        </cell-adjusted-data>
+                        <cell-adjusted-data>
+                            <adjusted-data-id>ADJ-BAG88296-T-2</adjusted-data-id>
+                            <adjusted-mfi>2.5</adjusted-mfi>
+                            <formula>Sample Raw Channel Value / Negative Serum Raw Channel Value</formula>
                         </cell-adjusted-data>
 
                         <cell-interpretation>
                             <adjusted-data-id>ADJ-BAG88296-T-1</adjusted-data-id>
                             <cell-classification>Positive</cell-classification>
+                            <mfi-threshold>92</mfi-threshold>
                             <classification-entity>
                                 Local Laboratory rule set
                             </classification-entity>
                             <interpretation-reason>
-                                Adjusted MFI above positivity threshold for T cell flow crossmatch
+                                Channel Shift is higher than Channel Shift threshold.
+                            </interpretation-reason>
+                        </cell-interpretation>
+
+                        <cell-interpretation>
+                            <adjusted-data-id>ADJ-BAG88296-T-2</adjusted-data-id>
+                            <cell-classification>Positive</cell-classification>
+                            <ratio-threshold>1.5</ratio-threshold>
+                            <classification-entity>
+                                Local Laboratory rule set
+                            </classification-entity>
+                            <interpretation-reason>
+                                Channel Shift Ratio is higher than Channel Shift Ratio threshold.
                             </interpretation-reason>
                         </cell-interpretation>
 

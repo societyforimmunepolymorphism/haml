@@ -77,7 +77,7 @@
                     <assay-id>class_II</assay-id>
                     <target-bead-observation>
                         <bead-info>
-                            <bead-id>LS1A04-201</bead-id>
+                            <bead-id>LS2A04-201</bead-id>
                             <bead-type>target</bead-type>
                             <HLA-target-type>who#3.61.0#HLA-DRB1*07:01</HLA-target-type>
                             <relative-antigen-density>1.00</relative-antigen-density>
@@ -120,52 +120,53 @@
             </working-sample>
         </sample>
 
-    <transplant-source>
-        <transplant-source-id>ET_18473</transplant-source-id>
-        <evaluation-date>2026-04-27</evaluation-date>
-        <transplant-date>2026-04-28</transplant-date>
-        <HLA-target-type>
-            who#3.62.0#HLA-A*02:01+HLA-A*24:02+HLA-B*07:02+HLA-B*08:01+HLA-C*07:01+
-            HLA-C*07:02+HLA-DRB1*03:01+HLA-DRB1*07:01+HLA-DQB1*02:01~HLA-DQA1*05:01+
-            HLA-DQB1*03:03~HLA-DQA1*02:01
-        </HLA-target-type>
-        <transplant-category>Kidney</transplant-category>
-    </transplant-source>
+        <transplant-source>
+            <transplant-source-id>ET_18473</transplant-source-id>
+            <evaluation-date>2026-04-27</evaluation-date>
+            <transplant-date>2026-04-28</transplant-date>
+            <HLA-target-type>
+                who#3.62.0#HLA-A*02:01+HLA-A*24:02+HLA-B*07:02+HLA-B*08:01+HLA-C*07:01+
+                HLA-C*07:02+HLA-DRB1*03:01+HLA-DRB1*07:01+HLA-DQB1*02:01~HLA-DQA1*05:01+
+                HLA-DQB1*03:03~HLA-DQA1*02:01
+            </HLA-target-type>
+            <transplant-category>Kidney</transplant-category>
+        </transplant-source>
 
-    <diagnostic-report>
-        <transplant-source-id>ET_18473</transplant-source-id>
+        <diagnostic-report>
+            <transplant-source-id>ET_18473</transplant-source-id>
 
-        <report-id>123</report-id>
-        <patient-antibody-profile>
-            <dsa-specificities>
-                <dsa-summary>who#2026-04-19#A24+DR7</dsa-summary>
+            <report-id>123</report-id>
+            <patient-antibody-profile>
+                <dsa-specificities>
+                    <dsa-summary>who#2026-04-19#A24+DR7</dsa-summary>
 
-                <dsa-specificity>
-                    <specificities-string>who#2026-04-19#A24</specificities-string>
-                    <dsa-description>DeNovo</dsa-description>
-                    <bead-ref>
-                        <assay-id>class_I</assay-id>
-                        <bead-id>LS1A04-001</bead-id>
-                        <reported-mfi>8820</reported-mfi>
-                    </bead-ref>
-                    <bead-ref>
-                        <assay-id>class_I</assay-id>
-                        <bead-id>LS1A04-002</bead-id>
-                        <reported-mfi>8820</reported-mfi>
-                    </bead-ref>
-                </dsa-specificity>
+                    <dsa-specificity>
+                        <specificities-string>who#2026-04-19#A24</specificities-string>
+                        <dsa-description>DeNovo</dsa-description>
+                        <bead-ref>
+                            <assay-id>class_I</assay-id>
+                            <bead-id>LS1A04-001</bead-id>
+                            <reported-mfi>8820</reported-mfi>
+                        </bead-ref>
+                        <bead-ref>
+                            <assay-id>class_I</assay-id>
+                            <bead-id>LS1A04-002</bead-id>
+                            <reported-mfi>8913</reported-mfi>
+                        </bead-ref>
+                    </dsa-specificity>
 
-                <dsa-specificity>
-                    <specificities-string>who#2026-04-19#DR7</specificities-string>
-                    <dsa-description>Pre-Existing</dsa-description>
-                    <bead-ref>
-                        <assay-id>class_II</assay-id>
-                        <bead-id>LS1A04-201</bead-id>
-                    </bead-ref>
-                </dsa-specificity>
-            </dsa-specificities>
-        </patient-antibody-profile>
-    </diagnostic-report>
+                    <dsa-specificity>
+                        <specificities-string>who#2026-04-19#DR7</specificities-string>
+                        <dsa-description>Pre-Existing</dsa-description>
+                        <bead-ref>
+                            <assay-id>class_II</assay-id>
+                            <bead-id>LS2A04-201</bead-id>
+                            <reported-mfi>8917</reported-mfi>
+                        </bead-ref>
+                    </dsa-specificity>
+                </dsa-specificities>
+            </patient-antibody-profile>
+        </diagnostic-report>
 
     </patient>
 </haml>

@@ -116,7 +116,33 @@
         <xs:all>
             <xs:element type="xs:string" name="patient-id" minOccurs="1" maxOccurs="1" />
             <xs:element type="hamlns:sample" name="sample" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element type="hamlns:transplant-source" name="transplant-source" minOccurs="0" maxOccurs="unbounded" />
             <xs:element type="hamlns:diagnostic-report" name="diagnostic-report" minOccurs="0" maxOccurs="1" />
+        </xs:all>
+    </xs:complexType>
+
+    <!-- TRANSPLANT-SOURCE -->
+    <xs:complexType name="transplant-source">
+        <xs:annotation><xs:documentation>
+            This structure specifies details about a transplant donor or graft source associated with the patient,
+            including typing, category, and relevant clinical dates.
+
+            Elements:
+            -----------
+            - transplant-source-id: An identifier of a transplant source within the namespace of an
+            authority system (e.g., a Eurotransplant donor ID). Must be unique within this document
+            to allow referencing from diagnostic reports.
+            - evaluation-date: The date (or dateTime) on which the transplant source was evaluated
+            - transplant-date: The date (or dateTime) on which the transplantation occurred or is scheduled
+            - HLA-target-type: A PL String containing the HLA phenotype specificity of the transplant source
+            - transplant-category: Freeform text describing the organ, tissue, or graft category (e.g., "Kidney")
+        </xs:documentation></xs:annotation>
+        <xs:all>
+            <xs:element name="transplant-source-id" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="evaluation-date" type="hamlns:date" minOccurs="0" maxOccurs="1" />
+            <xs:element name="transplant-date" type="hamlns:date" minOccurs="0" maxOccurs="1" />
+            <xs:element name="HLA-target-type" type="hamlns:hla-plstring" minOccurs="0" maxOccurs="1" />
+            <xs:element name="transplant-category" type="xs:string" minOccurs="0" maxOccurs="1" />
         </xs:all>
     </xs:complexType>
 
@@ -168,7 +194,6 @@
             <xs:element name="performer" type="hamlns:performer" minOccurs="0" maxOccurs="unbounded" />
             <xs:element name="results-interpreter" type="hamlns:results-interpreter" minOccurs="0" maxOccurs="unbounded" />
             <xs:element name="regulatory-statement" type="xs:string" minOccurs="0" maxOccurs="1" />
-            <xs:element name="dsa-specificities" type="hamlns:dsa-specificities" minOccurs="0" maxOccurs="1" />
         </xs:all>
     </xs:complexType>
 
@@ -296,7 +321,8 @@
                 for example "Kidney Transplantation Workup"
             - interpretation-context-comment: More details regarding the interpretation context
             - specificities: A collection of the antigenic specificities as determined by the assays
-            - dsa-specificities: TODO!
+            - dsa-specificities: A collection of Donor Specific Antibody (DSA) specificities evaluated
+                against a transplant source
         </xs:documentation></xs:annotation>
         <xs:all>
             <xs:element name="patient-antibody-date" type="hamlns:date" minOccurs="0" maxOccurs="1" />
@@ -330,30 +356,31 @@
     <!-- DSA-SPECIFICITIES -->
     <xs:complexType name="dsa-specificities">
         <xs:annotation><xs:documentation>
-            Donor Specific Antibody Specificities, as
+            Donor Specific Antibody (DSA) specificities identified for a given transplant source.
 
             Elements:
             -----------
-            <!--TODO! Element descriptions -->
+            - transplant-source-id: Optional reference to the transplant-source-id evaluated by this DSA set
+            - dsa-summary: PL String summarizing all identified DSA specificities (e.g., "who#2026-04-19#A24+DR7")
+            - dsa-specificity: Detailed breakdown of each individual DSA specificity and its supporting bead evidence
         </xs:documentation></xs:annotation>
         <xs:all>
             <xs:element name="dsa-summary" type="hamlns:hla-plstring" minOccurs="0" maxOccurs="1" />
             <xs:element name="dsa-specificity" type="hamlns:dsa-specificity" minOccurs="0" maxOccurs="unbounded" />
-            <!--<xs:element name="specificities-date" type="hamlns:date" minOccurs="0" maxOccurs="1" />
-            <xs:element name="specificities-type" type="xs:string" minOccurs="0" maxOccurs="1" />
-            <xs:element name="specificities-string" type="hamlns:hla-plstring" minOccurs="0" maxOccurs="unbounded" />
-            <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1" />-->
         </xs:all>
     </xs:complexType>
 
     <!-- DSA-SPECIFICITY -->
     <xs:complexType name="dsa-specificity">
         <xs:annotation><xs:documentation>
-            Donor Specific Antibody Specificity, as
+            An individual Donor Specific Antibody specificity, its clinical classification, and references
+            to supporting target bead observations.
 
             Elements:
             -----------
-            <!--TODO! Element descriptions -->
+            - specificities-string: PL String specifying the DSA antigenic target
+            - dsa-description: Clinical context or status of the DSA (e.g., "DeNovo", "Pre-Existing")
+            - bead-ref: Reference to a supporting bead observation within an assay in this document
         </xs:documentation></xs:annotation>
         <xs:all>
             <xs:element name="specificities-string" type="hamlns:hla-plstring" minOccurs="0" maxOccurs="unbounded" />
@@ -365,11 +392,13 @@
     <!-- BEAD-REF -->
     <xs:complexType name="bead-ref">
         <xs:annotation><xs:documentation>
-            Reference to a bead and assay
+            Reference to a specific target bead within an assay supporting an antibody or DSA assignment.
 
             Elements:
             -----------
-            <!--TODO! Element descriptions -->
+            - assay-id: Reference to the assay-id within this document containing the bead observation
+            - bead-id: Reference to the bead-id within the referenced assay
+            - reported-mfi: The MFI value associated with this bead as reported in the interpretation
         </xs:documentation></xs:annotation>
         <xs:all>
             <xs:element name="assay-id" type="xs:string" minOccurs="0" maxOccurs="1" />

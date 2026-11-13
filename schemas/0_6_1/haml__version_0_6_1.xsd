@@ -337,6 +337,8 @@
             <!--TODO! Element descriptions -->
         </xs:documentation></xs:annotation>
         <xs:all>
+            <xs:element name="dsa-summary" type="hamlns:hla-plstring" minOccurs="0" maxOccurs="1" />
+            <xs:element name="dsa-specificity" type="hamlns:dsa-specificity" minOccurs="0" maxOccurs="unbounded" />
             <!--<xs:element name="specificities-date" type="hamlns:date" minOccurs="0" maxOccurs="1" />
             <xs:element name="specificities-type" type="xs:string" minOccurs="0" maxOccurs="1" />
             <xs:element name="specificities-string" type="hamlns:hla-plstring" minOccurs="0" maxOccurs="unbounded" />
@@ -344,6 +346,37 @@
         </xs:all>
     </xs:complexType>
 
+    <!-- DSA-SPECIFICITY -->
+    <xs:complexType name="dsa-specificity">
+        <xs:annotation><xs:documentation>
+            Donor Specific Antibody Specificity, as
+
+            Elements:
+            -----------
+            <!--TODO! Element descriptions -->
+        </xs:documentation></xs:annotation>
+        <xs:all>
+            <xs:element name="specificities-string" type="hamlns:hla-plstring" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="dsa-description" type="xs:string" minOccurs="0" maxOccurs="1" />
+            <xs:element name="bead-ref" type="hamlns:bead-ref" minOccurs="0" maxOccurs="unbounded" />
+        </xs:all>
+    </xs:complexType>
+
+    <!-- BEAD-REF -->
+    <xs:complexType name="bead-ref">
+        <xs:annotation><xs:documentation>
+            Reference to a bead and assay
+
+            Elements:
+            -----------
+            <!--TODO! Element descriptions -->
+        </xs:documentation></xs:annotation>
+        <xs:all>
+            <xs:element name="assay-id" type="xs:string" minOccurs="0" maxOccurs="1" />
+            <xs:element name="bead-id" type="xs:string" minOccurs="0" maxOccurs="1" />
+            <xs:element name="reported-mfi" type="xs:double" minOccurs="0" maxOccurs="1" />
+        </xs:all>
+    </xs:complexType>
 
     <!-- SAMPLE -->
     <xs:complexType name="sample">

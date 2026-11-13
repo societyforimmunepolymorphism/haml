@@ -116,7 +116,7 @@
                         </cell-info>
                     </target-cell-observation>
 
-                </assay>
+                 </assay>
             </working-sample>
         </sample>
 
@@ -156,11 +156,11 @@
                 </dsa-specificity>
 
                 <dsa-specificity>
+                    <specificities-string>who#2026-04-19#DR7</specificities-string>
+                    <dsa-description>Pre-Existing</dsa-description>
                     <bead-ref>
                         <assay-id>class_II</assay-id>
                         <bead-id>LS1A04-201</bead-id>
-                        <specificities-string>who#2026-04-19#DR7</specificities-string>
-                        <dsa-description>Pre-Existing</dsa-description>
                     </bead-ref>
                 </dsa-specificity>
             </dsa-specificities>
